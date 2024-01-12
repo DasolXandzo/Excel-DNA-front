@@ -4,9 +4,9 @@ const ArrayTable = ({ dataArray }) => {
     console.log(dataArray);
   const renderRow = (row, index) => (
     <tr key={index}>
-      <td style={{paddingLeft: (5 - row.Depth) * 20}}>{row.Name}</td>
-      <td style={{textAlign: "center"}}>{row.Depth}</td>
+      <td style={{paddingLeft: (row.Depth) * 20}}>{row.Name}</td>
       <td style={{textAlign: "center"}}>{row.Result}</td>
+      <td style={{textAlign: "center"}}>{row.Depth}</td>
       {/* Добавьте дополнительные столбцы, если необходимо */}
     </tr>
   );
@@ -22,8 +22,8 @@ const ArrayTable = ({ dataArray }) => {
       <thead>
         <tr>
           <th>Name</th>
-          <th>Depth</th>
           <th>Result</th>
+          <th>Depth</th>
           {/* Добавьте заголовки для дополнительных столбцов, если необходимо */}
         </tr>
       </thead>
