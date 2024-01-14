@@ -1,16 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import queryString from 'query-string';
+import cl from './DialogWindow.module.css'
 import TreeComponent from './TreeComponent';
 import TreeViewTable from './TreeViewTable';
 import ArrayTable from './ArrayTable';
 
-export default function DialigWindow(props) {
-
-  // add some styles for Dialog window
-  const bodyStyle = {fontSize: "13px"};
-  const block = {marginBottom: "15px"};
-  const hedlineStyle = {fontSize: "120%", fontWeight: "bold"};
-  const treeHedlineStyle = {fontSize: "140%", fontWeight: "bold"};
+export default function DialogWindow(props) {
 
   const [array,SetArray] = useState([]);
 
@@ -22,7 +17,7 @@ export default function DialigWindow(props) {
 
     if (jsonString) {
       // Преобразование JSON-строки в массив и установка состояния
-      const formulasObjectsArray = JSON.parse(jsonString.replace(/\@/g, "+"));
+      const formulasObjectsArray = JSON.parse(jsonString.replace(/\@/g, "#"));
       SetArray(formulasObjectsArray);
       console.log(formulasObjectsArray);
     }
@@ -72,24 +67,19 @@ export default function DialigWindow(props) {
 
 
   return (
-    <div style={bodyStyle}>
+    <div className={cl.bodyStyle}>
 
-      <div style={block}>
+      <div className={cl.block}>
         {/*<div style={treeHedlineStyle}>Дерево функции</div>*/}
         {/*<TreeComponent data={array} />*/}
         <ArrayTable treeData={tree} />
         {/*<Tree tree={array} />*/}
       </div>
 
-      <div>
-        <div style={block}>
-          <div style={hedlineStyle}>Выбранная формула:</div>
+      <div className={cl.footer_block}>
+        <div className={cl.block}>
+          <div className={cl.hedlineStyle}>Выбранная формула:</div>
           <div>{props.lettersFormula.replace(/\ /g, "+")}</div>
-        </div>
-
-        <div style={block}>
-          <div style={hedlineStyle}>Формула с подставленными значениями:</div>
-          <div>{props.valuesFormula}</div>
         </div>
       </div>
 
