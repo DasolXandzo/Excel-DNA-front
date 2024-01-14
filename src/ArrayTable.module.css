@@ -1,0 +1,38 @@
+.collapse_btn {
+    margin-right: 5px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    font-size: 14px;
+    line-height: 1;
+    width: 2%;
+    padding: 0;
+    outline: none;
+    transition: 0.5s; 
+  }
+  
+  .collapse_btn:hover {
+    border-radius: 20%;
+    background-color: #000000;
+    color: #ffffff;
+  }
+
+.fake_btn {
+    margin-right: 5px;
+    background: none;
+    border: none;
+    font-size: 14px;
+    line-height: 1;
+    width: 2%;
+    padding: 0;
+    outline: none;
+    visibility: hidden;
+}
+
+.tr_body {
+    transition: 0.3s;
+  }
+
+  .tr_body:hover {
+    background-color: #d7d7d7;
+  }
