@@ -1,0 +1,53 @@
+.treeFormBodyStyle {
+    font-size: 13px;
+    min-height: 100vh;
+    position: relative;
+    padding-bottom: 70px;
+}
+
+.errorFormBodyStyle {
+    font-size: 13px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+form {
+    height: 40vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.block {
+    margin-bottom: 15px;
+}
+
+.hedlineStyle {
+    font-size: 120%;
+    font-weight: bold;
+}
+
+.treeHedlineStyle {
+    font-size: 140%;
+    font-weight: bold;
+}
+
+.footer_block {
+    width: 97%;
+    background-color: #d6d6d6;
+    padding: 1% 2% 0% 1%;
+    border-top: 2px solid #000000;
+    position: fixed;
+    bottom: 0px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.modalTitle {
+    font-size: 130%;
+    margin: 1vh 0vh 1vh 0vh;
+}

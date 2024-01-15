@@ -1,0 +1,21 @@
+.buttonStyle{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 2px solid #000000;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.85);
+    padding: 1% 0 1% 0;
+    text-decoration: none;
+}
+
+.buttonStyle:hover{
+    background-color: rgba(0, 0, 0, 0.85);
+    color: #ffffff;
+    transition-duration: 0.2s;
+}
+
+.buttonStyle{
+    width: 20vw;
+    font-size: 10px;
+}

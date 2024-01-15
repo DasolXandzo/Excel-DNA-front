@@ -1,0 +1,24 @@
+.inputField{
+    border: solid #000000 3px;
+    border-radius: 5px;
+    background-color: #ffffff;
+    padding: 1% 0 1% 2vw;
+    margin: 1vh 0 1vh 0;
+}
+
+input::-webkit-input-placeholder {
+  color: rgba(42, 42, 42, 0.778);
+} 
+input::-moz-placeholder {
+  color: rgba(42, 42, 42, 0.778);
+}
+
+.title{
+    margin-left: 1vw;
+    color: #000000;
+}
+
+.inputField{
+    font-size: 12px;
+    width: 60vw;
+}
