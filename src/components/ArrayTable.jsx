@@ -4,6 +4,48 @@ import cl from './ArrayTable.module.css';
 const ArrayTable = ({ treeData }) => {
   const [collapsedRows, setCollapsedRows] = useState([]);
 
+
+// check parametrs for slice name
+//----------------------------------------------------------
+function findBracketPairIndexes(input) {
+  let openBracketIndex = -1;
+  let closeBracketIndex = -1;
+  let bracketSum = 0;
+
+  for (let i = 0; i < input.length; i++) {
+      if (input[i] === '(') {
+          if (openBracketIndex === -1) {
+              openBracketIndex = i;
+          }
+          bracketSum++;
+      } else if (input[i] === ')') {
+          bracketSum--;
+          if (bracketSum === 0) {
+              closeBracketIndex = i;
+              break;
+          }
+      }
+  }
+
+  if (openBracketIndex !== -1 && closeBracketIndex !== -1) {
+      console.log(openBracketIndex, ',', closeBracketIndex);
+      let regexEN = /^-*[A-Z]+\(.+\)$/;
+      let regexRU = /^-*[А-Я]+\(.+\)$/;
+      if ((regexEN.test(input) || regexRU.test(input)) && openBracketIndex == input.indexOf('(') && closeBracketIndex == input.lastIndexOf(')'))
+      {
+          console.log("true");
+          return true;
+      } else{
+          console.log("false");
+          return false;
+      }
+
+  } else {
+      console.log("pair doesn't find");
+  }
+}
+//----------------------------------------------------------
+
   const toggleCollapse = (index) => {
     setCollapsedRows((prevCollapsedRows) => {
       if (prevCollapsedRows.includes(index)) {
@@ -39,7 +81,7 @@ const ArrayTable = ({ treeData }) => {
 
             {/* если нет дочерних элементов, то добавляем ёбанный костыль - кнопку-заглушку, чтобы отступы не ехали */}
             {node.children.length == 0 && (<button className={cl.fake_btn}>+</button>)}
-            {node.name}
+            {findBracketPairIndexes(node.name) && node.depth>1 ? node.name.split('(')[0] : node.name}
           </td>
           <td style={{ textAlign: 'center' }}>{node.result}</td>
           <td style={{ textAlign: 'center' }}>{node.depth}</td>
