@@ -1,0 +1,21 @@
+.errorFormBodyStyle {
+    font-size: 13px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+form {
+    height: 40vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.modalTitle {
+    font-size: 130%;
+    margin: 1vh 0vh 1vh 0vh;
+}
