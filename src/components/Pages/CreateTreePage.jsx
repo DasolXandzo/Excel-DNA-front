@@ -2,31 +2,34 @@ import React, { useState, useRef, useEffect } from 'react';
 import queryString from 'query-string';
 import cl from './CreateTreePage.module.css';
 import ArrayTable from '../ArrayTable';
+import * as signalR from '@microsoft/signalr';
+import { json } from 'react-router-dom';
 
 export default function CreateTreePage(props) {
 
   const [array,SetArray] = useState([]);
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch('http://127.0.0.1:8888/connection/');
+    const hubConnection = new signalR.HubConnectionBuilder()
+    .withUrl("https://localhost:7108/chat", { transport: signalR.HttpTransportType.WebSockets, skipNegotiation: true })
+    .build();
 
-        console.log(response)
-        
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
-        }
+            console.log(hubConnection)
+     hubConnection.on("Receive", function (message, userName) {
+ 
+              // создаем элемент <b> для имени пользователя
+            // var data = message.json()
+             console.log(message)
+             console.log("rec")
+          });
 
-        const data = await response.json();
-        console.log(data)
-        SetArray(data);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
-    };
-
-    fetchData();
+          hubConnection.start()
+            .then(function () {
+                console.log("as")
+            })
+            .catch(function (err) {
+                return console.error(err.toString());
+            });
   }, []);
 
 
