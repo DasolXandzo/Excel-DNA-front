@@ -3,6 +3,7 @@ import queryString from 'query-string';
 import cl from './CreateTreePage.module.css';
 import ArrayTable from '../ArrayTable';
 import * as signalR from '@microsoft/signalr';
+import { json } from 'react-router-dom';
 
 export default function CreateTreePage(props) {
 
@@ -14,9 +15,11 @@ export default function CreateTreePage(props) {
     .build();
 
             console.log(hubConnection)
-    hubConnection.on("Receive", function (message, userName) {
+     hubConnection.on("Receive", function (message, userName) {
  
               // создаем элемент <b> для имени пользователя
+            // var data = message.json()
+             console.log(message)
              console.log("rec")
           });
 
