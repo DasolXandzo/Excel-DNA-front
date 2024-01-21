@@ -33,15 +33,15 @@ function findBracketPairIndexes(input) {
       let regexRU = /^-*[А-Я]+\(.+\)$/;
       if ((regexEN.test(input) || regexRU.test(input)) && openBracketIndex == input.indexOf('(') && closeBracketIndex == input.lastIndexOf(')'))
       {
-          console.log("true");
-          return true;
+        //console.log("true");
+        return true;
       } else{
-          console.log("false");
-          return false;
+        //console.log("false");
+        return false;
       }
 
   } else {
-      console.log("pair doesn't find");
+    //console.log("pair doesn't find");
   }
 }
 //----------------------------------------------------------
@@ -60,9 +60,10 @@ function findBracketPairIndexes(input) {
     const divElement = event.target;
     console.log("div")
     // Проверяем, является ли элемент div
-    if (divElement.tagName.toLowerCase() === 'div') {
+    if (divElement.tagName.toLowerCase() === 'td') {
       const rect = divElement.getBoundingClientRect();
       const divInfo = {
+        formula: divElement.innerHTML.substring(divElement.innerHTML.lastIndexOf(">") + 1),
         tagName: divElement.tagName,
         id: divElement.id,
         className: divElement.className,
@@ -72,7 +73,7 @@ function findBracketPairIndexes(input) {
         },
         // Другие данные, которые вы хотите отправить
       };
-  
+      console.log(divInfo);
       // Отправляем информацию о div в window.chrome.webview
       window.chrome.webview.postMessage(JSON.stringify(divInfo));
     }

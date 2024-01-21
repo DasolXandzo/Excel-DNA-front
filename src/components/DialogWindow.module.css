@@ -5,15 +5,6 @@
     padding-bottom: 70px;
 }
 
-.errorFormBodyStyle {
-    font-size: 13px;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
 form {
     height: 40vh;
     display: flex;
