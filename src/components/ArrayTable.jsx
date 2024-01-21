@@ -56,10 +56,32 @@ function findBracketPairIndexes(input) {
     });
   };
 
+  const handleDivClick = (event) => {
+    const divElement = event.target;
+    console.log("div")
+    // Проверяем, является ли элемент div
+    if (divElement.tagName.toLowerCase() === 'div') {
+      const rect = divElement.getBoundingClientRect();
+      const divInfo = {
+        tagName: divElement.tagName,
+        id: divElement.id,
+        className: divElement.className,
+        dimensions: {
+          width: rect.width,
+          height: rect.height,
+        },
+        // Другие данные, которые вы хотите отправить
+      };
+  
+      // Отправляем информацию о div в window.chrome.webview
+      window.chrome.webview.postMessage(JSON.stringify(divInfo));
+    }
+  };
+
   const renderRows = (nodes, parentIndex = '') => {
     return nodes.map((node, index) => (
       <React.Fragment key={parentIndex + '-' + index}>
-        <tr className={cl.tr_body}>
+        <tr onClick={handleDivClick} className={cl.tr_body}>
           <td
             style={{
               paddingLeft: node.depth * 20,

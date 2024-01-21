@@ -8,17 +8,25 @@ export default function CreateTreePage(props) {
   const [array,SetArray] = useState([]);
 
   useEffect(() => {
-    // Получение параметра jsonString из URL
-    console.log(props);
-    const { jsonString } = queryString.parse(window.location.search);
-    console.log(jsonString)
+    const fetchData = async () => {
+      try {
+        const response = await fetch('http://127.0.0.1:8888/connection/');
 
-    if (jsonString) {
-      // Преобразование JSON-строки в массив и установка состояния
-      const formulasObjectsArray = JSON.parse(jsonString.replace(/\@/g, "#"));
-      SetArray(formulasObjectsArray);
-      console.log(formulasObjectsArray);
-    }
+        console.log(response)
+        
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        console.log(data)
+        SetArray(data);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
   }, []);
 
 
@@ -62,6 +70,9 @@ export default function CreateTreePage(props) {
 
   console.log(tree);
 //----------------------------------------------------------
+
+
+
 
 
   return (

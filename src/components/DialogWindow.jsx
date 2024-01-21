@@ -31,6 +31,7 @@ export default function DialogWindow(props) {
       const formulasObjectsArray = JSON.parse(jsonString.replace(/\@/g, "#"));
       SetArray(formulasObjectsArray);
       console.log(formulasObjectsArray);
+      //console.log(localStorage.getItem("test"))
     }
   }, []);
 
