@@ -58,7 +58,7 @@ function findBracketPairIndexes(input) {
 
   const handleDivClick = (event) => {
     const divElement = event.target;
-    console.log("div")
+    console.log("td")
     // Проверяем, является ли элемент div
     if (divElement.tagName.toLowerCase() === 'td') {
       const rect = divElement.getBoundingClientRect();
