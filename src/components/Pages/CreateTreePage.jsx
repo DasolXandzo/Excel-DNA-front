@@ -17,10 +17,10 @@ export default function CreateTreePage(props) {
             console.log(hubConnection)
      hubConnection.on("Receive", function (message, userName) {
  
-              // создаем элемент <b> для имени пользователя
+            // создаем элемент <b> для имени пользователя
             // var data = message.json()
-             console.log(message)
-             console.log("rec")
+            console.log(message)
+            console.log("rec")
           });
 
           hubConnection.start()
