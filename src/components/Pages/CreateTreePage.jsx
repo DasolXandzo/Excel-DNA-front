@@ -6,18 +6,29 @@ import * as signalR from '@microsoft/signalr';
 
 export default function CreateTreePage(props) {
   const [array, setArray] = useState([]);
+  const [user, setUser] = useState()
 
   useEffect(() => {
+    const { userName } = queryString.parse(window.location.search);
+    console.log(userName)
+    setUser(userName)
     const hubConnection = new signalR.HubConnectionBuilder()
       .withUrl("https://localhost:7108/chat", { transport: signalR.HttpTransportType.WebSockets, skipNegotiation: true })
       .build();
     console.log(hubConnection)
     hubConnection.on("Receive", async (message, username) => {
+      if(username != user){
+        console.log("error user")
+        return;
+      }
       console.log("as");
       console.log(message)
       const formulasObjectsArray = JSON.parse(message.replace(/\@/g, "#"));
       console.log(formulasObjectsArray);
       setArray(formulasObjectsArray);
+    });
+    hubConnection.on("ReceivePrivateMessage", async (username, message) => {
+      console.log("private");
     });
 
     hubConnection.start()
@@ -77,7 +88,7 @@ export default function CreateTreePage(props) {
       <div className={cl.footer_block}>
         <div className={cl.block}>
           <div className={cl.hedlineStyle}>Выбранная формула:</div>
-          <div>={props.lettersFormula.replace(/\ /g, "+")}</div>
+          <div></div>
         </div>
       </div>
     </div>
