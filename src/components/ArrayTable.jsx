@@ -5,7 +5,7 @@ const ArrayTable = ({ treeData }) => {
   const [collapsedRows, setCollapsedRows] = useState([]);
 
 
-// check parametrs for slice name
+// check parametrs for slice Name
 //----------------------------------------------------------
 function findBracketPairIndexes(input) {
   let openBracketIndex = -1;
@@ -85,15 +85,15 @@ function findBracketPairIndexes(input) {
         <tr onClick={handleDivClick} className={cl.tr_body}>
           <td
             style={{
-              paddingLeft: node.depth * 20,
+              paddingLeft: node.Depth * 20,
               display: 'flex',
               alignItems: 'center',
-              width: `${604 - node.depth * 20}px`,
+              width: `${604 - node.Depth * 20}px`,
             }}
             //onClick={() => toggleCollapse(parentIndex + '-' + index)}
           >
             {/* если есть дочерние элементы, то добавляем активную кнопку для эффекта коллапса */}
-            {node.children.length != 0 && (
+            {node.Childrens.length != 0 && (
               <button
               className={`${"collapse-btn"} ${cl.collapse_btn}`}
               onClick={() => toggleCollapse(parentIndex + '-' + index)}
@@ -103,16 +103,16 @@ function findBracketPairIndexes(input) {
             )}
 
             {/* если нет дочерних элементов, то добавляем ёбанный костыль - кнопку-заглушку, чтобы отступы не ехали */}
-            {node.children.length == 0 && (<button className={cl.fake_btn}>+</button>)}
-            {findBracketPairIndexes(node.name) && node.depth>1 ? node.name.split('(')[0] : node.name}
+            {node.Childrens.length == 0 && (<button className={cl.fake_btn}>+</button>)}
+            {findBracketPairIndexes(node.Name) && node.Depth>0 ? node.Name.split('(')[0] : node.Name}
           </td>
-          <td style={{ textAlign: 'center' }}>{node.result}</td>
-          <td style={{ textAlign: 'center' }}>{node.depth}</td>
+          <td style={{ textAlign: 'center' }}>{node.Result}</td>
+          <td style={{ textAlign: 'center' }}>{node.Depth}</td>
         </tr>
         {!collapsedRows.includes(parentIndex + '-' + index) &&
-          node.children &&
-          node.children.length > 0 && (
-            renderRows(node.children, parentIndex + '-' + index)
+          node.Childrens &&
+          node.Childrens.length > 0 && (
+            renderRows(node.Childrens, parentIndex + '-' + index)
           )}
       </React.Fragment>
     ));
