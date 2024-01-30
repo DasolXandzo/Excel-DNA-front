@@ -22,6 +22,18 @@ export default function CreateTreePage(props) {
       console.log(array);
       setFormulas(formulasObjectsArray.Childrens[0].Name)
     });
+    hubConnection.on("ReceiveJsonChunk", (chunk, startNewMessage) => {
+      console.log("Received chunk:", chunk);
+
+      // Ваш код для обработки части данных
+
+      // Проверка метаданных о начале нового сообщения
+      if (startNewMessage) {
+        setArray(chunk)
+      } else {
+        setArray(prevData => prevData + chunk)
+      }
+    });
 
     hubConnection.start()
       .then(() => {
